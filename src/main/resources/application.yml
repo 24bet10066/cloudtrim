@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: cloudtrim
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cloudtrim
+    username: cloudtrim
+    password: cloudtrim
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+cloudtrim:
+  jwt:
+    secret: "${JWT_SECRET:cloudtrim-local-development-secret-key-change-before-production}"
+    expiration-minutes: 60
+  exchange:
+    usd-inr: "${USD_INR:83.00}"
